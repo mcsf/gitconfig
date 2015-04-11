@@ -1,0 +1,78 @@
+[user]
+	name   = Miguel Fonseca
+	email  = miguelcsf@gmail.com
+
+[core]
+	editor = vim
+	excludesfile = /Users/miguelfonseca/.gitignore
+
+#[merge]
+	#tool = vimdiff
+
+[color]
+	branch = yes
+	diff   = yes
+	status = yes
+	interactive = true
+
+[alias]
+	### CHECKING OUT
+	br  = branch
+	co  = checkout
+	# pull requests
+	pr = "!git checkout -b $1 pull/origin/$1 #"
+
+	### MAKING HISTORY
+	ci  = commit -v
+	cp  = cherry-pick
+
+	### UPDATING
+	up = "!git remote update -p; git merge --ff-only @{u}"
+	rup = remote update -p
+	pullf = pull --ff-only
+	ff = merge --ff-only @{u}
+
+	### INSPECTING
+	# diffs
+	di  = diff
+	dih = diff HEAD
+	dis = diff --staged
+	diw = diff --color-words
+	dc = diff --staged # show staged commits
+	vimdiff = difftool --tool=vimdiff --no-prompt
+	# divergence between local and upstream
+	div = show-branch --current @{u}
+	sb  = show-branch
+	# logs
+	lo  = log --decorate --graph
+	lc = log ORIG_HEAD.. --stat --no-merges
+	gl = log --oneline --decorate --stat --graph
+	# log all
+	loa = log --decorate --graph --all
+	# log upstream
+	lou = log --decorate --graph @{u}
+	# inspecting: status
+	st  = status # -s -b
+	sta = status
+
+	### RESOLVING
+	fix = "!f() { ${EDITOR} $(git diff --name-only); }; f"
+	fixfix = "!f() { FILES=$(git diff --name-only --diff-filter=U); test -n \"${FILES}\" && ${EDITOR} ${FILES}; }; f"
+
+	### MISC
+	# open branch on GitHub
+	hub = !~/git-hub
+	# export as archive
+	export = !~/src/bin/git-export
+	# serve repo
+	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+
+[web]
+	browser = chrome
+
+[browser "chrome"]
+	cmd = /usr/bin/
+	path = google-chrome
+
+[push]
+	default = simple
