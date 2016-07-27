@@ -4,7 +4,7 @@
 
 [core]
 	editor = vim
-	excludesfile = /Users/miguelfonseca/.gitignore
+	excludesfile = ~/.gitignore
 
 #[merge]
 	#tool = vimdiff
@@ -19,6 +19,7 @@
 	### CHECKING OUT
 	br  = branch
 	co  = checkout
+	coo = "!~/git-fuzzy-checkout"
 	# pull requests
 	pr = "!git checkout -b $1 pull/origin/$1 #"
 
